@@ -13,7 +13,7 @@ public class GetAllTestCase extends  BaseClass{
 
     @Test
     public void getAllTest() {
-        System.out.println("Get Method");
+        //System.out.println("Get Method");
         Response response = getUser();
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
         assertThat(response.asString(), notNullValue());
