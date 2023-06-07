@@ -14,7 +14,7 @@ public class ToDOAllTestCase extends BaseClass {
 
     @Test
     public void getTestTODo() {
-        System.out.println("Get Method");git
+        System.out.println("Get Method");
         Response response = getToDo();
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
         assertThat(response.asString(), notNullValue());
