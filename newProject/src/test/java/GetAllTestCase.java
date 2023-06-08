@@ -36,7 +36,7 @@ public class GetAllTestCase extends  BaseClass{
         Response response = postUser(getBody);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_CREATED));
         assertThat(response.asString(),is(notNullValue()));
-      //  System.out.println(" User Get Response=>"+response.asString());
+       // System.out.println(" User Get Response=>"+response.asString());
         JSONObject jsonObjectUser=new JSONObject(response.asString());
         System.out.println("Get Post  response"+response.asString());
         int id =jsonObjectUser.getInt("id");

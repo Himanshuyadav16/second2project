@@ -39,10 +39,4 @@ public class BaseClass {
                 .request(Method.POST, "/users/"+id+"/posts");
         return response;
     }
-
-
-
-
-
-
 }
