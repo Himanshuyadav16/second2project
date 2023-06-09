@@ -13,7 +13,9 @@ public class GetAllTestCase extends  BaseClass{
 
     @Test
     public void getAllTest() {
-        //System.out.println("Get Method");
+
+       System.out.println("Get Method");
+ 
         Response response = getUser();
         assertThat(response.getStatusCode(), is(HttpStatus.SC_OK));
         assertThat(response.asString(), notNullValue());
@@ -36,7 +38,7 @@ public class GetAllTestCase extends  BaseClass{
         Response response = postUser(getBody);
         assertThat(response.getStatusCode(), is(HttpStatus.SC_CREATED));
         assertThat(response.asString(),is(notNullValue()));
-      //  System.out.println(" User Get Response=>"+response.asString());
+       // System.out.println(" User Get Response=>"+response.asString());
         JSONObject jsonObjectUser=new JSONObject(response.asString());
         System.out.println("Get Post  response"+response.asString());
         int id =jsonObjectUser.getInt("id");

@@ -187,9 +187,11 @@ public class CommentAllTestCase extends BaseClass{
 
         assertThat(responseComment.getStatusCode(), is(HttpStatus.SC_CREATED));
         assertThat(responseComment.asString(),is(notNullValue()));
-        System.out.println("response comment=>"+responseComment.asString());
 
-        Response deleteResponse=deleteComment(postId);
+        System.out.println("response comment=>"+responseComment.asString());
+        JSONObject jsonObjectCommentDelete=new JSONObject(responseComment.asString());
+        int postCommentId=jsonObjectCommentDelete.getInt("id");
+        Response deleteResponse=deleteComment(postCommentId);
         assertThat(deleteResponse.getStatusCode(),is(HttpStatus.SC_NO_CONTENT));
         System.out.println("Delete Response =>"+deleteResponse.asString());
     }
@@ -216,10 +218,10 @@ public class CommentAllTestCase extends BaseClass{
 
 
     //Delete Method Comment
-    public Response deleteComment(int postId){
+    public Response deleteComment(int id){
         Response response=given()
                 .header("Authorization","Bearer a6fc195dd60e618c4f0d37e15ae429917d090fe68d9ca16fd847681cddc448fa")
-                .request(Method.DELETE,"/posts/"+postId);
+                .request(Method.DELETE,"/comments/" + id);
         return  response;
     }
 
