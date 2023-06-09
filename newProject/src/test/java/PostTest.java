@@ -2,6 +2,7 @@ import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,40 +13,73 @@ import io.restassured.http.Method;
 public class PostTest extends BaseClass{
 @Test
 public void getPostTest() {
-    System.out.println("Get Post Test");
-    Response responsePost=getPost();
-    assertThat(responsePost.getStatusCode(),is(HttpStatus.SC_OK));
-    assertThat(responsePost.asString(),is(notNullValue()));
-    System.out.println("Get Response Post=>"+responsePost.asString());
+
+    Response postResponse=getPost();
+
+    assertThat(postResponse.getStatusCode(),is(HttpStatus.SC_OK));
+
+    JSONArray jsonArrayPost=new JSONArray(postResponse.asString());
+
+    assertThat(jsonArrayPost.length(),greaterThan(0));
+
+    JSONObject jsonObjectPost=jsonArrayPost.getJSONObject(0);
+
+    assertThat(jsonObjectPost.getInt("id"),is(notNullValue()));
+    assertThat(jsonObjectPost.getInt("user_id"),is(notNullValue()));
+    assertThat(jsonObjectPost.getString("title"),is(notNullValue()));
+    assertThat(jsonObjectPost.getString("body"),is(notNullValue()));
+
 }
 
 @Test
 public void postPostsTest(){
-    System.out.println("Post Posts Method");
-    Faker faker=new Faker();
-    String userName=faker.name().name();
-    String userEmail=faker.internet().emailAddress();
+    Faker faker = new Faker();
+    String userName = faker.name().name();
+    String userEmail = faker.internet().emailAddress();
+    String userGender="male";
+    String userStatus="active";
+
     String userBody = "{\n " +
             "\"name\":\"" + userName + "\",\n" +
             "\"email\":\"" + userEmail + "\",\n" +
-            "\"gender\":\"male\",\n" +
-            "\"status\":\"active\"\n" +
+            "\"gender\":\""+userGender+"\",\n" +
+            "\"status\":\""+userStatus+"\"\n" +
             "}";
-    Response responseUser = postUser(userBody);
-    assertThat(responseUser.getStatusCode(), is(HttpStatus.SC_CREATED));
-    assertThat(responseUser.asString(), is(notNullValue()));
 
-    JSONObject jsonObjectUser=new JSONObject(responseUser.asString());
+    Response postUserResponse = postUser(userBody);
+
+    assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+
+    JSONObject jsonObjectUser= new JSONObject(postUserResponse.asString());
+
     int idUser=jsonObjectUser.getInt("id");
+    assertThat(jsonObjectUser.getInt("id"),is(notNullValue()));
+    assertThat(jsonObjectUser.getString("name"),equalTo(userName));
+    assertThat(jsonObjectUser.getString("email"),equalTo(userEmail));
+    assertThat(jsonObjectUser.getString("gender"),equalTo(userGender));
+    assertThat(jsonObjectUser.getString("status"),equalTo(userStatus));
+
+
+    String postsTitle="Et tam  curso certe denique tristis.";
+    String postsBody="Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.";
 
     String postBody=" { \n" +
-            "    \"title\": \"Et tam  curso certe denique tristis.\",\n" +
-            "    \"body\":\"Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.\"\n" +
+            "    \"title\": \""+postsTitle+"\",\n" +
+            "    \"body\":\""+postsBody+"\"\n" +
             "}";
-    Response responsePost=postPosts(postBody,idUser);
-    assertThat(responsePost.getStatusCode(),is(HttpStatus.SC_CREATED));
-    assertThat(responsePost.asString(),is(notNullValue()));
-    System.out.println("Post Response Post=>"+responsePost.asString());
+
+    Response postResponse=postPosts(postBody,idUser);
+
+    assertThat(postResponse.getStatusCode(),is(HttpStatus.SC_CREATED));
+
+    JSONObject jsonObjectPost=new JSONObject(postResponse.asString());
+
+    int idPost=jsonObjectPost.getInt("id");
+
+    assertThat(jsonObjectPost.getInt("id"),equalTo(idPost));
+    assertThat(jsonObjectPost.getInt("user_id"),equalTo(idUser));
+    assertThat(jsonObjectPost.getString("title"),equalTo(postsTitle));
+    assertThat(jsonObjectPost.getString("body"),equalTo(postsBody));
 }
 
 @Test
@@ -83,10 +117,10 @@ public void putPostTest(){
             "    \"title\": \"Et tam  certe denique istis.\",\n" +
             "    \"body\": \"Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.\"\n" +
             "}";
-    Response responsePut=putPosts(putBody,idPost);
-    assertThat(responsePut.getStatusCode(),is(HttpStatus.SC_OK));
-    assertThat(responsePut.asString(),is(notNullValue()));
-    System.out.println("Put Response Post "+responsePut.asString());
+    Response PutResponse=putPosts(putBody,idPost);
+    assertThat(PutResponse.getStatusCode(),is(HttpStatus.SC_OK));
+    assertThat(PutResponse.asString(),is(notNullValue()));
+    System.out.println("Put Response Post "+PutResponse.asString());
 
 }
 @Test
@@ -120,8 +154,8 @@ public void deletePostTest(){
     JSONObject jsonObjectPost=new JSONObject(responsePost.asString());
     int idPost=jsonObjectPost.getInt("id");
 
-    Response responseDeletePost=deletePosts(idPost);
-    System.out.println("Response Delete Post=>"+responseDeletePost.asString());
+    Response DeletePostResponse=deletePosts(idPost);
+    System.out.println("Response Delete Post=>"+DeletePostResponse.asString());
 }
 
 // Post Get Method
@@ -134,10 +168,9 @@ public void deletePostTest(){
     //Post Posts Test
     public Response postPosts(String body,int id){
         Response response=given()
-                .header("Authorization","Bearer a6fc195dd60e618c4f0d37e15ae429917d090fe68d9ca16fd847681cddc448fa")
+                .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)
                 .body(body)
-                .when()
                 .request(Method.POST,"/users/"+id+"/posts");
         return response;
     }
@@ -146,10 +179,9 @@ public void deletePostTest(){
     // Put Post Method
     public Response putPosts(String body,int id){
         Response response=given()
-                .header("Authorization","Bearer a6fc195dd60e618c4f0d37e15ae429917d090fe68d9ca16fd847681cddc448fa")
+                .header("Authorization",accessToken)
                 .contentType(ContentType.JSON)
                 .body(body)
-                .when()
                 .request(Method.PUT,"/posts/"+id);
 
         return response;
@@ -158,7 +190,7 @@ public void deletePostTest(){
     //Post Delete Method
     public Response deletePosts(int id){
         Response response=given()
-                .header("Authorization","Bearer a6fc195dd60e618c4f0d37e15ae429917d090fe68d9ca16fd847681cddc448fa")
+                .header("Authorization",accessToken)
                 .request(Method.DELETE,"/posts/"+id);
         return response;
     }
