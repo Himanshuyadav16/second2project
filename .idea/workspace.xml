@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a10fa6f-7466-4a2b-bee7-537b3a3cb1fe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/AddressHas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/CommentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/EmpolyeeHas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/FirstConstructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/InheritanceProgram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/PostTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/ToDoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/src/test/java/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/AddressHas.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/CommentTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/EmpolyeeHas.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/FirstConstructor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/InheritanceProgram.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/PostTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/Student.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/ToDoTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newProject/target/test-classes/UserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newProject/src/test/java/BaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/newProject/src/test/java/BaseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newProject/src/test/java/CommentAllTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/newProject/src/test/java/CommentAllTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newProject/src/test/java/GetAllTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/newProject/src/test/java/GetAllTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newProject/target/test-classes/BaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/newProject/target/test-classes/BaseClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newProject/target/test-classes/CommentAllTestCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/newProject/target/test-classes/CommentAllTestCase.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2R0LD6mdbJdnnuBrZCGii6asmue" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/apple/Desktop/code/second2project"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a10fa6f-7466-4a2b-bee7-537b3a3cb1fe" name="Changes" comment="" />
+      <created>1686381929672</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686381929672</updated>
+    </task>
+    <servers />
+  </component>
+</project>

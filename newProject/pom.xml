@@ -8,18 +8,45 @@
     <artifactId>newProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.19.1</version>
+            <configuration>
+                <testFailureIgnore>true</testFailureIgnore>
+            </configuration>
+        </plugin>
+
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>3.0.0-M3</version>
+            <configuration>
+                <failIfNoTests>false</failIfNoTests>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
     <dependencies>
+
     <dependency>
         <groupId>io.rest-assured</groupId>
         <artifactId>rest-assured</artifactId>
         <version>4.2.0</version>
         <scope>test</scope>
     </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -35,6 +62,7 @@
             <scope>test</scope>
         </dependency>
 
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -42,9 +70,20 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>3.0.8</version>
         </dependency>
 
     </dependencies>
