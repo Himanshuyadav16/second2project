@@ -2,86 +2,86 @@
 <testng-results ignored="3" total="19" passed="16" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-13T00:13:45 IST" name="Surefire suite" finished-at="2023-06-13T00:14:26 IST" duration-ms="41627">
+  <suite started-at="2023-06-13T22:45:35 IST" name="All Test Suite" finished-at="2023-06-13T22:46:15 IST" duration-ms="40180">
     <groups>
     </groups>
-    <test started-at="2023-06-13T00:13:45 IST" name="Surefire test" finished-at="2023-06-13T00:14:26 IST" duration-ms="41627">
+    <test started-at="2023-06-13T22:45:35 IST" name="Regression" finished-at="2023-06-13T22:46:15 IST" duration-ms="40180">
       <class name="com.lise.testClasses.UserTest">
-        <test-method is-config="true" signature="beforeGetUser()[pri:0, instance:com.lise.testClasses.UserTest@3e57cd70]" started-at="2023-06-13T00:13:44 IST" name="beforeGetUser" finished-at="2023-06-13T00:13:45 IST" duration-ms="1168" status="PASS">
+        <test-method is-config="true" signature="beforeGetUser()[pri:0, instance:com.lise.testClasses.UserTest@4461c7e3]" started-at="2023-06-13T22:45:34 IST" name="beforeGetUser" finished-at="2023-06-13T22:45:35 IST" duration-ms="693" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeGetUser -->
-        <test-method signature="deleteUserTest()[pri:0, instance:com.lise.testClasses.UserTest@3e57cd70]" started-at="2023-06-13T00:13:45 IST" name="deleteUserTest" finished-at="2023-06-13T00:13:49 IST" duration-ms="4291" status="PASS">
+        <test-method signature="deleteUserTest()[pri:0, instance:com.lise.testClasses.UserTest@4461c7e3]" started-at="2023-06-13T22:45:35 IST" name="deleteUserTest" finished-at="2023-06-13T22:45:40 IST" duration-ms="4732" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteUserTest -->
-        <test-method signature="getUserTest()[pri:0, instance:com.lise.testClasses.UserTest@3e57cd70]" started-at="2023-06-13T00:13:49 IST" name="getUserTest" finished-at="2023-06-13T00:13:50 IST" duration-ms="1036" status="PASS">
+        <test-method signature="getUserTest()[pri:0, instance:com.lise.testClasses.UserTest@4461c7e3]" started-at="2023-06-13T22:45:40 IST" name="getUserTest" finished-at="2023-06-13T22:45:40 IST" duration-ms="718" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getUserTest -->
-        <test-method signature="postUserTest()[pri:0, instance:com.lise.testClasses.UserTest@3e57cd70]" started-at="2023-06-13T00:13:50 IST" name="postUserTest" finished-at="2023-06-13T00:13:52 IST" duration-ms="2191" status="PASS">
+        <test-method signature="postUserTest()[pri:0, instance:com.lise.testClasses.UserTest@4461c7e3]" started-at="2023-06-13T22:45:40 IST" name="postUserTest" finished-at="2023-06-13T22:45:42 IST" duration-ms="1732" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postUserTest -->
-        <test-method signature="putUserTest()[pri:0, instance:com.lise.testClasses.UserTest@3e57cd70]" started-at="2023-06-13T00:13:52 IST" name="putUserTest" finished-at="2023-06-13T00:13:55 IST" duration-ms="3095" status="PASS">
+        <test-method signature="putUserTest()[pri:0, instance:com.lise.testClasses.UserTest@4461c7e3]" started-at="2023-06-13T22:45:42 IST" name="putUserTest" finished-at="2023-06-13T22:45:45 IST" duration-ms="2659" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- putUserTest -->
       </class> <!-- com.lise.testClasses.UserTest -->
       <class name="com.lise.testClasses.CommentTest">
-        <test-method signature="deleteCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@2c039ac6]" started-at="2023-06-13T00:14:04 IST" name="deleteCommentTest" finished-at="2023-06-13T00:14:07 IST" duration-ms="3755" status="PASS">
+        <test-method signature="deleteCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@77e4c80f]" started-at="2023-06-13T22:45:55 IST" name="deleteCommentTest" finished-at="2023-06-13T22:45:58 IST" duration-ms="3173" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteCommentTest -->
-        <test-method signature="getCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@2c039ac6]" started-at="2023-06-13T00:14:07 IST" name="getCommentTest" finished-at="2023-06-13T00:14:08 IST" duration-ms="926" status="PASS">
+        <test-method signature="getCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@77e4c80f]" started-at="2023-06-13T22:45:58 IST" name="getCommentTest" finished-at="2023-06-13T22:45:59 IST" duration-ms="1027" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getCommentTest -->
-        <test-method signature="postCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@2c039ac6]" started-at="2023-06-13T00:14:08 IST" name="postCommentTest" finished-at="2023-06-13T00:14:12 IST" duration-ms="3974" status="PASS">
+        <test-method signature="postCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@77e4c80f]" started-at="2023-06-13T22:45:59 IST" name="postCommentTest" finished-at="2023-06-13T22:46:02 IST" duration-ms="3290" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postCommentTest -->
-        <test-method signature="putCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@2c039ac6]" started-at="2023-06-13T00:14:12 IST" name="putCommentTest" finished-at="2023-06-13T00:14:17 IST" duration-ms="4588" status="PASS">
+        <test-method signature="putCommentTest()[pri:0, instance:com.lise.testClasses.CommentTest@77e4c80f]" started-at="2023-06-13T22:46:02 IST" name="putCommentTest" finished-at="2023-06-13T22:46:07 IST" duration-ms="4157" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- putCommentTest -->
       </class> <!-- com.lise.testClasses.CommentTest -->
       <class name="com.lise.testClasses.ToDoTest">
-        <test-method signature="deleteToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@9a7504c]" started-at="2023-06-13T00:13:56 IST" name="deleteToDoTest" finished-at="2023-06-13T00:13:59 IST" duration-ms="3080" status="PASS">
+        <test-method signature="deleteToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@35fc6dc4]" started-at="2023-06-13T22:46:07 IST" name="deleteToDoTest" finished-at="2023-06-13T22:46:09 IST" duration-ms="2786" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteToDoTest -->
-        <test-method signature="getToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@9a7504c]" started-at="2023-06-13T00:13:59 IST" name="getToDoTest" finished-at="2023-06-13T00:14:00 IST" duration-ms="1014" status="PASS">
+        <test-method signature="getToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@35fc6dc4]" started-at="2023-06-13T22:46:09 IST" name="getToDoTest" finished-at="2023-06-13T22:46:10 IST" duration-ms="720" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getToDoTest -->
-        <test-method signature="postToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@9a7504c]" started-at="2023-06-13T00:14:00 IST" name="postToDoTest" finished-at="2023-06-13T00:14:01 IST" duration-ms="1440" status="PASS">
+        <test-method signature="postToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@35fc6dc4]" started-at="2023-06-13T22:46:10 IST" name="postToDoTest" finished-at="2023-06-13T22:46:12 IST" duration-ms="2073" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postToDoTest -->
-        <test-method signature="putToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@9a7504c]" started-at="2023-06-13T00:14:01 IST" name="putToDoTest" finished-at="2023-06-13T00:14:04 IST" duration-ms="2552" status="PASS">
+        <test-method signature="putToDoTest()[pri:0, instance:com.lise.testClasses.ToDoTest@35fc6dc4]" started-at="2023-06-13T22:46:12 IST" name="putToDoTest" finished-at="2023-06-13T22:46:15 IST" duration-ms="2936" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- putToDoTest -->
       </class> <!-- com.lise.testClasses.ToDoTest -->
       <class name="com.lise.testClasses.PostTest">
-        <test-method signature="deletePostTest()[pri:0, instance:com.lise.testClasses.PostTest@587d1d39]" started-at="2023-06-13T00:14:17 IST" name="deletePostTest" finished-at="2023-06-13T00:14:19 IST" duration-ms="2503" status="PASS">
+        <test-method signature="deletePostTest()[pri:0, instance:com.lise.testClasses.PostTest@351d0846]" started-at="2023-06-13T22:45:45 IST" name="deletePostTest" finished-at="2023-06-13T22:45:48 IST" duration-ms="3069" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deletePostTest -->
-        <test-method signature="getPostTest()[pri:0, instance:com.lise.testClasses.PostTest@587d1d39]" started-at="2023-06-13T00:14:19 IST" name="getPostTest" finished-at="2023-06-13T00:14:20 IST" duration-ms="666" status="PASS">
+        <test-method signature="getPostTest()[pri:0, instance:com.lise.testClasses.PostTest@351d0846]" started-at="2023-06-13T22:45:48 IST" name="getPostTest" finished-at="2023-06-13T22:45:49 IST" duration-ms="926" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPostTest -->
-        <test-method signature="postPostsTest()[pri:0, instance:com.lise.testClasses.PostTest@587d1d39]" started-at="2023-06-13T00:14:20 IST" name="postPostsTest" finished-at="2023-06-13T00:14:23 IST" duration-ms="2714" status="PASS">
+        <test-method signature="postPostsTest()[pri:0, instance:com.lise.testClasses.PostTest@351d0846]" started-at="2023-06-13T22:45:49 IST" name="postPostsTest" finished-at="2023-06-13T22:45:52 IST" duration-ms="2658" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postPostsTest -->
-        <test-method signature="putPostTest()[pri:0, instance:com.lise.testClasses.PostTest@587d1d39]" started-at="2023-06-13T00:14:23 IST" name="putPostTest" finished-at="2023-06-13T00:14:26 IST" duration-ms="3757" status="PASS">
+        <test-method signature="putPostTest()[pri:0, instance:com.lise.testClasses.PostTest@351d0846]" started-at="2023-06-13T22:45:52 IST" name="putPostTest" finished-at="2023-06-13T22:45:55 IST" duration-ms="3479" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- putPostTest -->
       </class> <!-- com.lise.testClasses.PostTest -->
-    </test> <!-- Surefire test -->
-  </suite> <!-- Surefire suite -->
+    </test> <!-- Regression -->
+  </suite> <!-- All Test Suite -->
 </testng-results>

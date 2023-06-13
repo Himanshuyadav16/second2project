@@ -5,170 +5,251 @@ import com.lise.BaseClass;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
+
 import org.apache.http.HttpStatus;
 
 public class ToDoTest extends BaseClass {
-   @Test
-   public void getToDoTest(){
-       System.out.println("Get ToDos Test");
-       Response responseToDo=getToDo();
-       assertThat(responseToDo.getStatusCode(),is(HttpStatus.SC_OK));
-       assertThat(responseToDo.asString(),is(notNullValue()));
-       System.out.println(responseToDo.asString());
-   }
+    @Test
+    public void getToDoTest() {
+        Response toDoResponse = getToDo();
 
-   @Test
-   public  void postToDoTest(){
-       System.out.println("Post ToDos Method");
-       Faker faker=new Faker();
-       String userName=faker.name().name();
-       String userEmail=faker.internet().emailAddress();
-       String userBody = "{\n " +
-               "\"name\":\"" + userName + "\",\n" +
-               "\"email\":\"" + userEmail + "\",\n" +
-               "\"gender\":\"male\",\n" +
-               "\"status\":\"active\"\n" +
-               "}";
-       Response responseUser = postUsers(userBody);
-       assertThat(responseUser.getStatusCode(), is(HttpStatus.SC_CREATED));
-       assertThat(responseUser.asString(), is(notNullValue()));
+        assertThat(toDoResponse.getStatusCode(), is(HttpStatus.SC_OK));
 
-       JSONObject jsonObjectUser=new JSONObject(responseUser.asString());
-       int idUser=jsonObjectUser.getInt("id");
-       String postBody="{\n" +
-               "        \n" +
-               "        \"user_id\": "+idUser+",\n" +
-               "        \"title\": \"Capitulus adeo illo aurum consuasor.\",\n" +
-               "        \"due_on\": \"2023-07-07T00:00:00.000+05:30\",\n" +
-               "        \"status\": \"completed\"\n" +
-               "    }";
-       Response responseToDoPost=postToDo(postBody);
-       assertThat(responseToDoPost.getStatusCode(),is(HttpStatus.SC_CREATED));
-       assertThat(responseToDoPost.asString(),is(notNullValue()));
-       System.out.println("ToDos Response Post=>"+responseToDoPost.asString());
-   }
-@Test
-   public void putToDoTest(){
-    System.out.println("Put ToDos Method");
-    Faker faker=new Faker();
-    String userName=faker.name().name();
-    String userEmail=faker.internet().emailAddress();
-    String userBody = "{\n " +
-            "\"name\":\"" + userName + "\",\n" +
-            "\"email\":\"" + userEmail + "\",\n" +
-            "\"gender\":\"male\",\n" +
-            "\"status\":\"active\"\n" +
-            "}";
-    Response responseUser = postUsers(userBody);
-    assertThat(responseUser.getStatusCode(), is(HttpStatus.SC_CREATED));
-    assertThat(responseUser.asString(), is(notNullValue()));
+        JSONArray toDoGetArray = new JSONArray(toDoResponse.asString());
 
-    JSONObject jsonObjectUser=new JSONObject(responseUser.asString());
-    int idUser=jsonObjectUser.getInt("id");
-    String postBody="{\n" +
-            "        \n" +
-            "        \"user_id\": "+idUser+",\n" +
-            "        \"title\": \"Capitulus adeo illo aurum consuasor.\",\n" +
-            "        \"due_on\": \"2023-07-07T00:00:00.000+05:30\",\n" +
-            "        \"status\": \"completed\"\n" +
-            "    }";
-    Response responseToDoPost=postToDo(postBody);
-    assertThat(responseToDoPost.getStatusCode(),is(HttpStatus.SC_CREATED));
-    assertThat(responseToDoPost.asString(),is(notNullValue()));
+        assertThat(toDoGetArray.length(), greaterThan(0));
 
-   JSONObject jsonObjectToDo=new JSONObject(responseToDoPost.asString());
-   int idTodo=jsonObjectToDo.getInt("id");
-   String putBody="{\n" +
-           "        \n" +
-           "        \"user_id\": "+idUser+",\n" +
-           "        \"title\": \"Capitulus adeo illo aurum consuasor.\",\n" +
-           "        \"due_on\": \"2023-07-07T00:00:00.000+05:30\",\n" +
-           "        \"status\": \"completed\"\n" +
-           "    }";
-   Response responseToDoPut=putToDO(putBody,idTodo);
-   assertThat(responseToDoPut.getStatusCode(),is(HttpStatus.SC_OK));
-   assertThat(responseToDoPut.asString(),is(notNullValue()));
-    System.out.println("ToDos Response Put"+responseToDoPut.asString());
-   }
+        JSONObject toDoData = toDoGetArray.getJSONObject(0);
 
-@Test
-public void deleteToDoTest(){
-    System.out.println("Delete ToDos Method");
-    Faker faker=new Faker();
-    String userName=faker.name().name();
-    String userEmail=faker.internet().emailAddress();
-    String userBody = "{\n " +
-            "\"name\":\"" + userName + "\",\n" +
-            "\"email\":\"" + userEmail + "\",\n" +
-            "\"gender\":\"male\",\n" +
-            "\"status\":\"active\"\n" +
-            "}";
-    Response responseUser = postUsers(userBody);
-    assertThat(responseUser.getStatusCode(), is(HttpStatus.SC_CREATED));
-    assertThat(responseUser.asString(), is(notNullValue()));
+        assertThat(toDoData.getInt("id"), is(notNullValue()));
+        assertThat(toDoData.getInt("user_id"), is(notNullValue()));
+        assertThat(toDoData.getString("title"), is(notNullValue()));
+        assertThat(toDoData.getString("due_on"), is(notNullValue()));
+        assertThat(toDoData.getString("status"), is(notNullValue()));
+    }
 
-    JSONObject jsonObjectUser=new JSONObject(responseUser.asString());
-    int idUser=jsonObjectUser.getInt("id");
-    String postBody="{\n" +
-            "        \n" +
-            "        \"user_id\": "+idUser+",\n" +
-            "        \"title\": \"Capitulus adeo illo aurum consuasor.\",\n" +
-            "        \"due_on\": \"2023-07-07T00:00:00.000+05:30\",\n" +
-            "        \"status\": \"completed\"\n" +
-            "    }";
-    Response responseToDoPost=postToDo(postBody);
-    assertThat(responseToDoPost.getStatusCode(),is(HttpStatus.SC_CREATED));
-    assertThat(responseToDoPost.asString(),is(notNullValue()));
+    @Test
+    public void postToDoTest() {
+        Faker faker = new Faker();
+        String userName = faker.name().name();
+        String userEmail = faker.internet().emailAddress();
+        String userGender = "male";
+        String userStatus = "active";
+        String postTitle = "Capitulus adeo illo aurum consuasor.";
+        String postDue_on = "2023-07-07T00:00:00.000+05:30";
+        String postStatus = "completed";
+        String userBody = "{\n " +
+                "\"name\":\"" + userName + "\",\n" +
+                "\"email\":\"" + userEmail + "\",\n" +
+                "\"gender\":\"" + userGender + "\",\n" +
+                "\"status\":\"" + userStatus + "\"\n" +
+                "}";
+        Response postUserResponse = postUsers(userBody);
 
-    JSONObject jsonObjectToDo=new JSONObject(responseToDoPost.asString());
-    int idTodo=jsonObjectToDo.getInt("id");
-    Response responseToDoDelete=deleteToDo(idTodo);
-    assertThat(responseToDoDelete.getStatusCode(),is(HttpStatus.SC_NO_CONTENT));
-    assertThat(responseToDoDelete.asString(),is(notNullValue()));
-    System.out.println("Todos Response Delete =>"+responseToDoDelete.asString());
+        assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
 
-}
+        JSONObject postData = new JSONObject(postUserResponse.asString());
 
-//Get ToDos Method
- public Response getToDo() {
-Response response=given()
-        .request(Method.GET,"/todos");
-return  response;
- }
+        int userId = postData.getInt("id");
+
+        assertThat(postData.getInt("id"), notNullValue());
+        assertThat(postData.getString("name"), is(userName));
+        assertThat(postData.getString("email"), is(userEmail));
+        assertThat(postData.getString("gender"), is(userGender));
+        assertThat(postData.getString("status"), is(userStatus));
+        String postBody = "{\n" +
+                "        \n" +
+                "        \"user_id\": " + userId + ",\n" +
+                "        \"title\": \"" + postTitle + "\",\n" +
+                "        \"due_on\": \"" + postDue_on + "\",\n" +
+                "        \"status\": \"" + postStatus + "\"\n" +
+                "    }";
+        Response toDoPostResponse = postToDo(postBody);
+        assertThat(toDoPostResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+
+        JSONObject postToDoData = new JSONObject(toDoPostResponse.asString());
+
+        int toDoId = postToDoData.getInt("id");
+
+        assertThat(postToDoData.getInt("user_id"), is(userId));
+        assertThat(postToDoData.getString("title"), is(postTitle));
+        assertThat(postToDoData.getString("due_on"), is(postDue_on));
+        assertThat(postToDoData.getString("status"), is(postStatus));
+
+        Response toDoDeleteResponse = deleteToDo(toDoId);
+        assertThat(toDoDeleteResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));
+    }
+
+    @Test
+    public void putToDoTest() {
+        Faker faker = new Faker();
+        String userName = faker.name().name();
+        String userEmail = faker.internet().emailAddress();
+        String userGender = "male";
+        String userStatus = "active";
+        String postTitle = "Capitulus adeo illo aurum consuasor.";
+        String postDue_on = "2023-07-07T00:00:00.000+05:30";
+        String postStatus = "completed";
+        String putTitle = "Capitulus adeo illo aurum consuasor.";
+        String putDue_on = "2023-07-07T00:00:00.000+05:30";
+        String putStatus = "completed";
+
+        String userBody = "{\n " +
+                "\"name\":\"" + userName + "\",\n" +
+                "\"email\":\"" + userEmail + "\",\n" +
+                "\"gender\":\"" + userGender + "\",\n" +
+                "\"status\":\"" + userStatus + "\"\n" +
+                "}";
+        Response postUserResponse = postUsers(userBody);
+
+        assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+
+        JSONObject postData = new JSONObject(postUserResponse.asString());
+
+        int userId = postData.getInt("id");
+
+        assertThat(postData.getInt("id"), notNullValue());
+        assertThat(postData.getString("name"), is(userName));
+        assertThat(postData.getString("email"), is(userEmail));
+        assertThat(postData.getString("gender"), is(userGender));
+        assertThat(postData.getString("status"), is(userStatus));
+        String postBody = "{\n" +
+                "        \n" +
+                "        \"user_id\": " + userId + ",\n" +
+                "        \"title\": \"" + postTitle + "\",\n" +
+                "        \"due_on\": \"" + postDue_on + "\",\n" +
+                "        \"status\": \"" + postStatus + "\"\n" +
+                "    }";
+        Response toDoPostResponse = postToDo(postBody);
+        assertThat(toDoPostResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+
+        JSONObject postToDoData = new JSONObject(toDoPostResponse.asString());
+
+        int toDoId = postToDoData.getInt("id");
+
+        assertThat(postToDoData.getInt("user_id"), is(userId));
+        assertThat(postToDoData.getString("title"), is(postTitle));
+        assertThat(postToDoData.getString("due_on"), is(postDue_on));
+        assertThat(postToDoData.getString("status"), is(postStatus));
+
+        String putBody = "{\n" +
+                "        \n" +
+                "        \"user_id\": " + userId + ",\n" +
+                "        \"title\": \"" + putTitle + "\",\n" +
+                "        \"due_on\": \"" + putDue_on + "\",\n" +
+                "        \"status\": \"" + putStatus + "\"\n" +
+                "    }";
+        Response toDoPutResponse = putToDO(putBody, toDoId);
+
+        assertThat(toDoPutResponse.getStatusCode(), is(HttpStatus.SC_OK));
+
+        JSONObject putToDoData = new JSONObject(toDoPutResponse.asString());
+
+        int toDoPutId = putToDoData.getInt("id");
+
+        assertThat(putToDoData.getInt("user_id"), is(userId));
+        assertThat(putToDoData.getString("title"), is(postTitle));
+        assertThat(putToDoData.getString("due_on"), is(postDue_on));
+        assertThat(putToDoData.getString("status"), is(postStatus));
+
+        Response toDoDeleteResponse = deleteToDo(toDoPutId);
+
+        assertThat(toDoDeleteResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));
+    }
+
+    @Test
+    public void deleteToDoTest() {
+        Faker faker = new Faker();
+        String userName = faker.name().name();
+        String userEmail = faker.internet().emailAddress();
+        String userGender = "male";
+        String userStatus = "active";
+        String postTitle = "Capitulus adeo illo aurum consuasor.";
+        String postDue_on = "2023-07-07T00:00:00.000+05:30";
+        String postStatus = "completed";
+        String userBody = "{\n " +
+                "\"name\":\"" + userName + "\",\n" +
+                "\"email\":\"" + userEmail + "\",\n" +
+                "\"gender\":\"" + userGender + "\",\n" +
+                "\"status\":\"" + userStatus + "\"\n" +
+                "}";
+        Response postUserResponse = postUsers(userBody);
+
+        assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+
+        JSONObject postData = new JSONObject(postUserResponse.asString());
+
+        int userId = postData.getInt("id");
+
+        assertThat(postData.getInt("id"), notNullValue());
+        assertThat(postData.getString("name"), is(userName));
+        assertThat(postData.getString("email"), is(userEmail));
+        assertThat(postData.getString("gender"), is(userGender));
+        assertThat(postData.getString("status"), is(userStatus));
+        String postBody = "{\n" +
+                "        \n" +
+                "        \"user_id\": " + userId + ",\n" +
+                "        \"title\": \"" + postTitle + "\",\n" +
+                "        \"due_on\": \"" + postDue_on + "\",\n" +
+                "        \"status\": \"" + postStatus + "\"\n" +
+                "    }";
+        Response toDoPostResponse = postToDo(postBody);
+        assertThat(toDoPostResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+
+        JSONObject postToDoData = new JSONObject(toDoPostResponse.asString());
+
+        int toDoId = postToDoData.getInt("id");
+
+        assertThat(postToDoData.getInt("user_id"), is(userId));
+        assertThat(postToDoData.getString("title"), is(postTitle));
+        assertThat(postToDoData.getString("due_on"), is(postDue_on));
+        assertThat(postToDoData.getString("status"), is(postStatus));
+
+        Response toDoDeleteResponse = deleteToDo(toDoId);
+        assertThat(toDoDeleteResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));
+    }
+
+    //Get ToDos Method
+    public Response getToDo() {
+        Response response = given()
+                .request(Method.GET, "/todos");
+        return response;
+    }
 
     //Post ToDOs Method
-    public Response postToDo(String body){
-        Response response=given()
-                .header("Authorization",accessToken)
+    public Response postToDo(String body) {
+        Response response = given()
+                .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .request(Method.POST,"/todos");
-        return  response;
+                .request(Method.POST, "/todos");
+        return response;
     }
 
     //Put ToDos Method
-    public Response putToDO(String body,int id){
-        Response response=given()
-                .header("Authorization",accessToken)
+    public Response putToDO(String body, int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .request(Method.PUT,"/todos/"+id);
-        return  response;
+                .request(Method.PUT, "/todos/" + id);
+        return response;
     }
 
-//Delete ToDos Method
-
-    public Response deleteToDo(int id){
-        Response response=given()
-                .header("Authorization",accessToken)
-                .request(Method.DELETE,"/todos/"+id);
+    //Delete ToDos Method
+    public Response deleteToDo(int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
+                .request(Method.DELETE, "/todos/" + id);
         return response;
     }
 }

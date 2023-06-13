@@ -5,7 +5,6 @@ import com.lise.BaseClass;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
@@ -16,188 +15,169 @@ import static org.hamcrest.Matchers.*;
 
 import org.apache.http.HttpStatus;
 
-
-public  class UserTest extends BaseClass {
-
+public class UserTest extends BaseClass {
     @Test
     public void getUserTest() {
+        Response userResponse = getUser();
 
-         Response userResponse=getUser();
+        assertThat(userResponse.getStatusCode(), is(HttpStatus.SC_OK));
 
-         assertThat(userResponse.getStatusCode(),is(HttpStatus.SC_OK));
+        JSONArray userArrayList = new JSONArray(userResponse.asString());
 
-         JSONArray jsonArrayUser=new JSONArray(userResponse.asString());
+        assertThat(userArrayList.length(), greaterThan(0));
 
-         assertThat(jsonArrayUser.length(),greaterThan(0));
+        JSONObject userList = userArrayList.getJSONObject(0);
 
-        JSONObject jsonObjectUser=jsonArrayUser.getJSONObject(0);
-
-        assertThat(jsonObjectUser.getInt("id"),is(notNullValue()));
-        assertThat(jsonObjectUser.getString("name"),is(notNullValue()));
-        assertThat(jsonObjectUser.getString("gender"),is(notNullValue()));
-        assertThat(jsonObjectUser.getString("email"),is(notNullValue()));
-        assertThat(jsonObjectUser.getString("status"),is(notNullValue()));
+        assertThat(userList.getInt("id"), notNullValue());
+        assertThat(userList.getString("name"), notNullValue());
+        assertThat(userList.getString("gender"), notNullValue());
+        assertThat(userList.getString("email"), notNullValue());
+        assertThat(userList.getString("status"), notNullValue());
     }
+
     @Test
     public void postUserTest() {
-
         Faker faker = new Faker();
         String userName = faker.name().name();
         String userEmail = faker.internet().emailAddress();
-        String userGender="male";
-        String userStatus="active";
+        String userGender = "male";
+        String userStatus = "active";
 
         String userBody = "{\n " +
                 "\"name\":\"" + userName + "\",\n" +
                 "\"email\":\"" + userEmail + "\",\n" +
-                "\"gender\":\""+userGender+"\",\n" +
-                "\"status\":\""+userStatus+"\"\n" +
+                "\"gender\":\"" + userGender + "\",\n" +
+                "\"status\":\"" + userStatus + "\"\n" +
                 "}";
-
         Response postUserResponse = postUsers(userBody);
 
-         assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+        assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
 
-        JSONObject jsonObjectPost= new JSONObject(postUserResponse.asString());
+        JSONObject postData = new JSONObject(postUserResponse.asString());
 
-        int idUser=jsonObjectPost.getInt("id");
-        assertThat(jsonObjectPost.getInt("id"),is(notNullValue()));
-        assertThat(jsonObjectPost.getString("name"),equalTo(userName));
-        assertThat(jsonObjectPost.getString("email"),equalTo(userEmail));
-        assertThat(jsonObjectPost.getString("gender"),equalTo(userGender));
-        assertThat(jsonObjectPost.getString("status"),equalTo(userStatus));
+        int userId = postData.getInt("id");
 
-        Response deleteUserResponse=deleteUsers(idUser);
+        assertThat(postData.getInt("id"), notNullValue());
+        assertThat(postData.getString("name"), is(userName));
+        assertThat(postData.getString("email"), is(userEmail));
+        assertThat(postData.getString("gender"), is(userGender));
+        assertThat(postData.getString("status"), is(userStatus));
 
-        assertThat(deleteUserResponse.getStatusCode(),is(HttpStatus.SC_NO_CONTENT));
+        Response deleteUserResponse = deleteUsers(userId);
 
-
+        assertThat(deleteUserResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));
     }
 
     @Test
-    public void putUserTest(){
+    public void putUserTest() {
         Faker faker = new Faker();
-        String userName=faker.name().name();
-        String userEmail=faker.internet().emailAddress();
-        String userGender="male";
-        String userStatus="active";
+        String userName = faker.name().name();
+        String userEmail = faker.internet().emailAddress();
+        String userGender = "male";
+        String userStatus = "active";
+        String updatedUserName = faker.name().name();
+        String updateUserEmail = faker.internet().emailAddress();
+        String updateUserGender = "male";
+        String updateUserStatus = "active";
+
         String userBody = "{\n " +
                 "\"name\":\"" + userName + "\",\n" +
                 "\"email\":\"" + userEmail + "\",\n" +
-                "\"gender\":\""+userGender+"\",\n" +
-                "\"status\":\""+userStatus+"\"\n" +
+                "\"gender\":\"" + userGender + "\",\n" +
+                "\"status\":\"" + userStatus + "\"\n" +
+                "}";
+
+        String updateUserBody = "  {\n" +
+                "    \"email\":\"" + updateUserEmail + "\",\n" +
+                "    \"name\":\"" + updatedUserName + "\",\n" +
+                "    \"gender\": \"" + updateUserGender + "\",\n" +
+                "    \"status\":\"" + updateUserStatus + "\"\n" +
                 "}";
         Response postUserResponse = postUsers(userBody);
         assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
-        JSONObject jsonObjectPost= new JSONObject(postUserResponse.asString());
+        JSONObject postData = new JSONObject(postUserResponse.asString());
 
-        int idUser=jsonObjectPost.getInt("id");
-        assertThat(jsonObjectPost.getInt("id"),is(notNullValue()));
-        assertThat(jsonObjectPost.getString("name"),equalTo(userName));
-        assertThat(jsonObjectPost.getString("email"),equalTo(userEmail));
-        assertThat(jsonObjectPost.getString("gender"),equalTo(userGender));
-        assertThat(jsonObjectPost.getString("status"),equalTo(userStatus));
+        int userId = postData.getInt("id");
+        assertThat(postData.getInt("id"), (notNullValue()));
+        assertThat(postData.getString("name"), is(userName));
+        assertThat(postData.getString("email"), is(userEmail));
+        assertThat(postData.getString("gender"), is(userGender));
+        assertThat(postData.getString("status"), is(userStatus));
 
-        String updatedUserName=faker.name().name();
-        String updateUserEmail=faker.internet().emailAddress();
-        String updateUserGender="male";
-        String updateUserStatus="active";
+        Response putUserResponse = putUser(updateUserBody, userId);
+        assertThat(putUserResponse.getStatusCode(), is(HttpStatus.SC_OK));
 
+        JSONObject putUserData = new JSONObject(putUserResponse.asString());
 
-        String updateUserBody="  {\n" +
-                "    \"email\":\""+updateUserEmail+"\",\n" +
-                "    \"name\":\""+updatedUserName+"\",\n" +
-                "    \"gender\": \""+updateUserGender+"\",\n" +
-                "    \"status\":\""+updateUserStatus+"\"\n" +
-                "}";
-        Response putUserResponse=putUser(updateUserBody,idUser);
-        assertThat(putUserResponse.getStatusCode(),is(HttpStatus.SC_OK));
+        int putUserId = putUserData.getInt("id");
 
-        JSONObject jsonObjectPutUser=new JSONObject(putUserResponse.asString());
+        assertThat(putUserData.getInt("id"), is(putUserId));
+        assertThat(putUserData.getString("name"), is(updatedUserName));
+        assertThat(putUserData.getString("email"), is(updateUserEmail));
+        assertThat(putUserData.getString("gender"), is(updateUserGender));
+        assertThat(putUserData.getString("status"), is(updateUserStatus));
 
-        int idPutUser=jsonObjectPutUser.getInt("id");
+        Response deleteUserResponse = deleteUsers(putUserId);
 
-        assertThat(jsonObjectPutUser.getInt("id"),equalTo(idPutUser));
-        assertThat(jsonObjectPutUser.getString("name"),equalTo(updatedUserName));
-        assertThat(jsonObjectPutUser.getString("email"),equalTo(updateUserEmail));
-        assertThat(jsonObjectPutUser.getString("gender"),equalTo(updateUserGender));
-        assertThat(jsonObjectPutUser.getString("status"),equalTo(updateUserStatus));
-
-
-        Response deleteUserResponse=deleteUsers(idPutUser);
-
-        assertThat(deleteUserResponse.getStatusCode(),is(HttpStatus.SC_NO_CONTENT));
+        assertThat(deleteUserResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));
     }
 
-@Test
-public void deleteUserTest(){
-    Faker faker= new Faker();
-    String userName =faker.name().name();
-    String userEmail=faker.internet().emailAddress();
-    String userGender="male";
-    String userStatus="active";
-    String userBody = "{\n " +
-            "\"name\":\"" +userName + "\",\n" +
-            "\"email\":\"" +userEmail + "\",\n" +
-            "\"gender\":\""+userGender+"\",\n" +
-            "\"status\":\""+userStatus+"\"\n" +
-            "}";
-    Response postUserResponse = postUsers(userBody);
+    @Test
+    public void deleteUserTest() {
+        Faker faker = new Faker();
+        String userName = faker.name().name();
+        String userEmail = faker.internet().emailAddress();
+        String userGender = "male";
+        String userStatus = "active";
+        String userBody = "{\n " +
+                "\"name\":\"" + userName + "\",\n" +
+                "\"email\":\"" + userEmail + "\",\n" +
+                "\"gender\":\"" + userGender + "\",\n" +
+                "\"status\":\"" + userStatus + "\"\n" +
+                "}";
+        Response postUserResponse = postUsers(userBody);
 
+        assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
 
-    assertThat(postUserResponse.getStatusCode(), is(HttpStatus.SC_CREATED));
+        JSONObject postData = new JSONObject(postUserResponse.asString());
 
+        int userId = postData.getInt("id");
 
-    JSONObject jsonObjectPost= new JSONObject(postUserResponse.asString());
+        assertThat(postData.getInt("id"), notNullValue());
+        assertThat(postData.getString("name"), is(userName));
+        assertThat(postData.getString("email"), is(userEmail));
+        assertThat(postData.getString("gender"), is(userGender));
+        assertThat(postData.getString("status"), is(userStatus));
 
-    int idUser=jsonObjectPost.getInt("id");
-    assertThat(jsonObjectPost.getInt("id"),is(notNullValue()));
-    assertThat(jsonObjectPost.getString("name"),equalTo(userName));
-    assertThat(jsonObjectPost.getString("email"),equalTo(userEmail));
-    assertThat(jsonObjectPost.getString("gender"),equalTo(userGender));
-    assertThat(jsonObjectPost.getString("status"),equalTo(userStatus));
+        Response deleteUserResponse = deleteUsers(userId);
 
-
-    Response deleteUserResponse=deleteUsers(idUser);
-
-    assertThat(deleteUserResponse.getStatusCode(),is(HttpStatus.SC_NO_CONTENT));
-
-}
+        assertThat(deleteUserResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));
+    }
 
     //User Get Method
     public Response getUser() {
-        Response response= given()
-                .request(Method.GET,"/users");
+        Response response = given()
+                .request(Method.GET, "/users");
         return response;
     }
 
-    //User Post Method
-    public Response postUsers(String userBody){
-        Response response= given()
-                .header("Authorization",accessToken)
-                .contentType(ContentType.JSON )
-                .body(userBody)
-                .request(Method.POST,"/users");
-        return  response;
-    }
 
     // User Put Method
-    public Response putUser(String updateUserBody,int id){
-        Response response=given()
-                .header("Authorization",accessToken)
+    public Response putUser(String updateUserBody, int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)
                 .body(updateUserBody)
-                .request(Method.PUT,"/users/"+id);
-        return  response;
+                .request(Method.PUT, "/users/" + id);
+        return response;
 
     }
 
     //  User Delete Method
-    public Response deleteUsers(int id){
-        Response response=given()
-                .header("Authorization",accessToken)
-                .request(Method.DELETE,"/users/"+id);
+    public Response deleteUsers(int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
+                .request(Method.DELETE, "/users/" + id);
         return response;
     }
-
 }
