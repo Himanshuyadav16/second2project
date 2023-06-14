@@ -1,6 +1,6 @@
 com/lise/testClasses/ToDoTest.class
+com/lise/utils/ApplicationProperties.class
 com/lise/testClasses/PostTest.class
 com/lise/BaseClass.class
 com/lise/testClasses/UserTest.class
 com/lise/testClasses/CommentTest.class
-com/lise/utils/ApplicationProperties.class

@@ -146,7 +146,7 @@ public class ToDoTest extends BaseClass {
                 "        \"due_on\": \"" + putDue_on + "\",\n" +
                 "        \"status\": \"" + putStatus + "\"\n" +
                 "    }";
-        Response toDoPutResponse = putToDO(putBody, toDoId);
+        Response toDoPutResponse = putToDo(putBody, toDoId);
 
         assertThat(toDoPutResponse.getStatusCode(), is(HttpStatus.SC_OK));
 
@@ -235,7 +235,7 @@ public class ToDoTest extends BaseClass {
     }
 
     //Put ToDos Method
-    public Response putToDO(String body, int id) {
+    public Response putToDo(String body, int id) {
         Response response = given()
                 .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)

@@ -63,6 +63,7 @@ public class UserTest extends BaseClass {
         assertThat(postData.getString("gender"), is(userGender));
         assertThat(postData.getString("status"), is(userStatus));
 
+
         Response deleteUserResponse = deleteUsers(userId);
 
         assertThat(deleteUserResponse.getStatusCode(), is(HttpStatus.SC_NO_CONTENT));

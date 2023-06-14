@@ -7,6 +7,11 @@
             <class name="com.lise.testClasses.PostTest"/>
             <class name="com.lise.testClasses.CommentTest"/>
             <class name="com.lise.testClasses.ToDoTest"/>
+            <class name="com.lise.testClasses.UserTestData"/>
+            <class name="com.lise.testClasses.PostTestData"/>
+            <class name="com.lise.testClasses.CommentTestData"/>
+            <class name="com.lise.testClasses.ToDoTestData"/>
+
         </classes>
     </test>
 </suite>

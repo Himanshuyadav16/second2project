@@ -1,6 +1,14 @@
-/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/ToDoTest.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/PostTestData.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/modals/ToDoGetResponse.java
 /Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/utils/ApplicationProperties.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/modals/UserGetResponse.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/PostTest.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/CommentTestData.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/ToDoTest.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/UserTestData.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/ToDoTestData.java
 /Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/BaseClass.java
 /Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/UserTest.java
-/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/PostTest.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/modals/PostGetResponse.java
 /Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/testClasses/CommentTest.java
+/Users/apple/Desktop/code/second2project/newProject/src/test/java/com/lise/modals/CommentGetResponse.java

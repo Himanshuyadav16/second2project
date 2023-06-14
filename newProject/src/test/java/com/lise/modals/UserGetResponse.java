@@ -1,11 +1,12 @@
 package com.lise.modals;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
 @Getter
 @Setter
 @ToString
-public class ResponseUserGet {
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserGetResponse {
     int id;
     String name;
     String email;
