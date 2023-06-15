@@ -3,14 +3,14 @@
 <suite name="All Test Suite">
     <test name="Regression" parallel="tests" thread-count="1">
         <classes>
-            <class name="com.lise.testClasses.UserTest"/>
-            <class name="com.lise.testClasses.PostTest"/>
-            <class name="com.lise.testClasses.CommentTest"/>
-            <class name="com.lise.testClasses.ToDoTest"/>
-            <class name="com.lise.testClasses.UserTestData"/>
-            <class name="com.lise.testClasses.PostTestData"/>
-            <class name="com.lise.testClasses.CommentTestData"/>
-            <class name="com.lise.testClasses.ToDoTestData"/>
+            <class name="com.lise.testClasses.test.UserTest"/>
+            <class name="com.lise.testClasses.test.PostTest"/>
+            <class name="com.lise.testClasses.test.CommentTest"/>
+            <class name="com.lise.testClasses.test.ToDoTest"/>
+            <class name="com.lise.testClasses.model.UserTestData"/>
+            <class name="com.lise.testClasses.model.PostTestData"/>
+            <class name="com.lise.testClasses.model.CommentTestData"/>
+            <class name="com.lise.testClasses.model.ToDoTestData"/>
 
         </classes>
     </test>

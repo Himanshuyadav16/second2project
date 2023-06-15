@@ -1,7 +1,8 @@
 package com.lise;
 
-import com.lise.modals.PostGetResponse;
-import com.lise.modals.UserGetResponse;
+import com.lise.modals.PostResponse;
+import com.lise.modals.UserPostBody;
+import com.lise.modals.UserResponse;
 import com.lise.utils.ApplicationProperties;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -41,27 +42,27 @@ public class BaseClass {
                 .body(postPostBody)
                 .when()
                 .request(Method.POST, "/users/" + id + "/posts");
-
         return response;
     }
 
 
     //User Post Method
-    public UserGetResponse postUser(String userBody) {
-        UserGetResponse response = given()
+    public UserResponse postUser(UserPostBody userBody) {
+        UserResponse response = given()
                 .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)
                 .body(userBody)
+                .when()
                 .request(Method.POST, "/users")
                 .then()
                 .extract()
-                .as(UserGetResponse.class);
+                .as(UserResponse.class);
         return response;
     }
 
     //Post Posts Method
-    public PostGetResponse postPosts(String postPostBody, int id) {
-        PostGetResponse response = given()
+    public PostResponse postPosts(String postPostBody, int id) {
+        PostResponse response = given()
                 .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)
                 .body(postPostBody)
@@ -69,8 +70,39 @@ public class BaseClass {
                 .request(Method.POST, "/users/" + id + "/posts")
                 .then()
                 .extract()
-                .as(PostGetResponse.class);
+                .as(PostResponse.class);
         return response;
     }
 
+    //  User Delete Method
+    public Response deleteUsers(int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
+                .request(Method.DELETE, "/users/" + id);
+        return response;
+    }
+
+    //Post Delete Method
+    public Response deletePosts(int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
+                .request(Method.DELETE, "/posts/" + id);
+        return response;
+    }
+
+    //Delete Comment Method
+    public Response deleteComment(int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
+                .request(Method.DELETE, "/comments/" + id);
+        return response;
+    }
+
+    //Delete ToDos Method
+    public Response deleteToDo(int id) {
+        Response response = given()
+                .header("Authorization", accessToken)
+                .request(Method.DELETE, "/todos/" + id);
+        return response;
+    }
 }
