@@ -21,7 +21,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="newProject" options="--add-exports jdk.internal.vm.compiler/org.graalvm.compiler.core.common.spi=ALL-UNNAMED" />
+      <module name="newProject" options="" />
     </option>
   </component>
 </project>

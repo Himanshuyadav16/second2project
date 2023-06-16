@@ -1,4 +1,5 @@
 package com.lise.modals.users;
+
 import lombok.*;
 
 @Getter
