@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Regression" parallel="tests" thread-count="1">
+        <classes>
+            <class name="com.lise.testClasses.test.UserTest"/>
+            <class name="com.lise.testClasses.test.PostTest"/>
+            <class name="com.lise.testClasses.test.CommentTest"/>
+            <class name="com.lise.testClasses.test.ToDoTest"/>
+            <class name="com.lise.testClasses.model.UserTestData"/>
+            <class name="com.lise.testClasses.model.PostTestData"/>
+            <class name="com.lise.testClasses.model.CommentTestData"/>
+            <class name="com.lise.testClasses.model.ToDoTestData"/>
+        </classes>
+    </test>
+</suite>
