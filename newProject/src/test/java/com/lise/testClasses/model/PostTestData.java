@@ -32,7 +32,7 @@ public class PostTestData extends BaseClass {
     @Test
     public void postPostsTestData() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -48,7 +48,7 @@ public class PostTestData extends BaseClass {
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
 
-        PostPostBody postPostBody=new PostPostBody();
+        PostPostBody postPostBody = new PostPostBody();
         postPostBody.setUser_id(userId);
         postPostBody.setTitle("Et tam  curso certe denique tristis.");
         postPostBody.setBody("Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.");
@@ -70,7 +70,7 @@ public class PostTestData extends BaseClass {
     @Test
     public void putPostTestData() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -89,7 +89,7 @@ public class PostTestData extends BaseClass {
         assertThat(postUserResponse.getEmail(), is(userPostBody.email));
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
-        PostPostBody postPostBody=new PostPostBody();
+        PostPostBody postPostBody = new PostPostBody();
         postPostBody.setUser_id(userId);
         postPostBody.setTitle("Et tam  curso certe denique tristis.");
         postPostBody.setBody("Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.");
@@ -103,7 +103,7 @@ public class PostTestData extends BaseClass {
         assertThat(postResponse.getTitle(), is(postPostBody.title));
         assertThat(postResponse.getBody(), is(postPostBody.body));
 
-        PostPutBody postPutBody=new PostPutBody();
+        PostPutBody postPutBody = new PostPutBody();
 
         postPutBody.setUser_id(userId);
         postPutBody.setTitle("Et tam  curso  denique tristis.");

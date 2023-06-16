@@ -33,7 +33,7 @@ public class ToDoTestData extends BaseClass {
     @Test
     public void postToDoTestData() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -49,7 +49,7 @@ public class ToDoTestData extends BaseClass {
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
 
-        ToDoPostBody toDoPostBody=new ToDoPostBody();
+        ToDoPostBody toDoPostBody = new ToDoPostBody();
         toDoPostBody.setUser_id(userId);
         toDoPostBody.setTitle("Capitulus adeo illo aurum consuasor.");
         toDoPostBody.setDue_on("2023-07-07T00:00:00.000+05:30");
@@ -74,7 +74,7 @@ public class ToDoTestData extends BaseClass {
     @Test
     public void putToDoTest() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -90,7 +90,7 @@ public class ToDoTestData extends BaseClass {
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
 
-        ToDoPostBody toDoPostBody=new ToDoPostBody();
+        ToDoPostBody toDoPostBody = new ToDoPostBody();
         toDoPostBody.setUser_id(userId);
         toDoPostBody.setTitle("Capitulus adeo illo aurum consuasor.");
         toDoPostBody.setDue_on("2023-07-07T00:00:00.000+05:30");
@@ -106,7 +106,7 @@ public class ToDoTestData extends BaseClass {
         assertThat(toDoPostResponse.getDue_on(), is(toDoPostBody.due_on));
         assertThat(toDoPostResponse.getStatus(), is(toDoPostBody.status));
 
-        ToDoPutBody toDoPutBody=new ToDoPutBody();
+        ToDoPutBody toDoPutBody = new ToDoPutBody();
         toDoPutBody.setUser_id(userId);
         toDoPutBody.setTitle("Capitulus adeo illo aurum consuasor.");
         toDoPutBody.setDue_on("2023-07-07T00:00:00.000+05:30");

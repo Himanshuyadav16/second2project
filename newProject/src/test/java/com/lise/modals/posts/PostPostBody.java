@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public class PostPostBody {
     public int user_id;
-    public  String title;
-    public   String body;
+    public String title;
+    public String body;
 
 }

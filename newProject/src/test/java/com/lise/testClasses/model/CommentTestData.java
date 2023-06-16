@@ -35,7 +35,7 @@ public class CommentTestData extends BaseClass {
     @Test
     public void postCommentTestData() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -51,7 +51,7 @@ public class CommentTestData extends BaseClass {
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
 
-        PostPostBody postPostBody=new PostPostBody();
+        PostPostBody postPostBody = new PostPostBody();
         postPostBody.setUser_id(userId);
         postPostBody.setTitle("Et tam  curso certe denique tristis.");
         postPostBody.setBody("Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.");
@@ -65,7 +65,7 @@ public class CommentTestData extends BaseClass {
         assertThat(postResponse.getTitle(), is(postPostBody.title));
         assertThat(postResponse.getBody(), is(postPostBody.body));
 
-        CommentPostBody commentPostBody=new CommentPostBody();
+        CommentPostBody commentPostBody = new CommentPostBody();
         commentPostBody.setPost_id(postId);
         commentPostBody.setName(faker.name().name());
         commentPostBody.setEmail(faker.internet().emailAddress());
@@ -93,7 +93,7 @@ public class CommentTestData extends BaseClass {
     @Test
     public void putCommentTest() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -109,7 +109,7 @@ public class CommentTestData extends BaseClass {
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
 
-        PostPostBody postPostBody=new PostPostBody();
+        PostPostBody postPostBody = new PostPostBody();
         postPostBody.setUser_id(userId);
         postPostBody.setTitle("Et tam  curso certe denique tristis.");
         postPostBody.setBody("Tenus vigor ut. Triduana praesentium qui. Ab repellendus tertius. Copiose adultus sit. Molestiae cubo voluptatum. Agnosco color creta. Circumvenio debilito thermae. Vinitor vesica animi. Accusantium aeneus velociter. Despirmatio comminor speciosus. Temeritas quo tamen. Alioqui explicabo dolorem. Maiores versus sono. Tantum texo acceptus. Omnis ademptio catena. Valde argumentum qui.");
@@ -123,7 +123,7 @@ public class CommentTestData extends BaseClass {
         assertThat(postResponse.getTitle(), is(postPostBody.title));
         assertThat(postResponse.getBody(), is(postPostBody.body));
 
-        CommentPostBody commentPostBody=new CommentPostBody();
+        CommentPostBody commentPostBody = new CommentPostBody();
         commentPostBody.setPost_id(postId);
         commentPostBody.setName(faker.name().name());
         commentPostBody.setEmail(faker.internet().emailAddress());
@@ -139,7 +139,7 @@ public class CommentTestData extends BaseClass {
         assertThat(responsePostComment.getEmail(), is(commentPostBody.email));
         assertThat(responsePostComment.getBody(), is(commentPostBody.body));
 
-        CommentPutBody commentPutBody=new CommentPutBody();
+        CommentPutBody commentPutBody = new CommentPutBody();
         commentPutBody.setPost_id(postId);
         commentPutBody.setName(faker.name().name());
         commentPutBody.setEmail(faker.internet().emailAddress());

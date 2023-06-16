@@ -23,7 +23,6 @@ public class BaseClass {
         System.out.println("Before Suite");
     }
 
-
     //User Post Method
     public Response postUsers(String userBody) {
         Response response = given()
@@ -46,7 +45,6 @@ public class BaseClass {
         return response;
     }
 
-
     //User Post Method
     public UserResponse postUser(UserPostBody userBody) {
         UserResponse response = given()
@@ -62,7 +60,7 @@ public class BaseClass {
     }
 
     //Post Posts Method
-    public PostResponse postPosts(PostPostBody postPostBody,int id) {
+    public PostResponse postPosts(PostPostBody postPostBody, int id) {
         PostResponse response = given()
                 .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)

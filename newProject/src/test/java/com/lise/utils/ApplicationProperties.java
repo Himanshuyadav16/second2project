@@ -6,20 +6,21 @@ public enum ApplicationProperties {
     INSTANCE;
     public Properties properties;
 
-     ApplicationProperties() {
+    ApplicationProperties() {
         properties = new Properties();
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("application.properties"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-    public String getUrl(){
 
-         return properties.getProperty("url");
+    public String getUrl() {
+
+        return properties.getProperty("url");
     }
-    public String getToken(){
-         return properties.getProperty("tokens");
-     }
+
+    public String getToken() {
+        return properties.getProperty("tokens");
+    }
 }

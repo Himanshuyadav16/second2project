@@ -34,7 +34,7 @@ public class UserTestData extends BaseClass {
     @Test
     public void postUserTestData() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
@@ -54,14 +54,14 @@ public class UserTestData extends BaseClass {
     @Test
     public void putUserTestData() {
         Faker faker = new Faker();
-        UserPostBody userPostBody =new UserPostBody();
+        UserPostBody userPostBody = new UserPostBody();
 
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
         userPostBody.setStatus("active");
 
-        UserPutBody updateUserBody =new UserPutBody();
+        UserPutBody updateUserBody = new UserPutBody();
         updateUserBody.setName(faker.name().name());
         updateUserBody.setEmail(faker.internet().emailAddress());
         updateUserBody.setGender("male");
@@ -104,6 +104,7 @@ public class UserTestData extends BaseClass {
                 .as(UserResponse[].class);
         return response;
     }
+
     // User Put Method
     public UserResponse putUser(UserPutBody updateUserBody, int id) {
         UserResponse response = given()
