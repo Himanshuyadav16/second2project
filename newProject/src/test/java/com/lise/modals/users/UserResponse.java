@@ -1,11 +1,9 @@
-package com.lise.modals;
+package com.lise.modals.users;
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserResponse {
     int id;
     String name;

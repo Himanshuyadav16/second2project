@@ -11,7 +11,6 @@
             <class name="com.lise.testClasses.model.PostTestData"/>
             <class name="com.lise.testClasses.model.CommentTestData"/>
             <class name="com.lise.testClasses.model.ToDoTestData"/>
-
         </classes>
     </test>
 </suite>

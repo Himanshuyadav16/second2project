@@ -1,13 +1,10 @@
-package com.lise.modals;
+package com.lise.modals.comments;
 
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
-
 public class CommentResponse {
     int id;
     int post_id;

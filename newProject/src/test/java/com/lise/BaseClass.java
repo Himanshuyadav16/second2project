@@ -1,8 +1,9 @@
 package com.lise;
 
-import com.lise.modals.PostResponse;
-import com.lise.modals.UserPostBody;
-import com.lise.modals.UserResponse;
+import com.lise.modals.posts.PostPostBody;
+import com.lise.modals.posts.PostResponse;
+import com.lise.modals.users.UserPostBody;
+import com.lise.modals.users.UserResponse;
 import com.lise.utils.ApplicationProperties;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -61,7 +62,7 @@ public class BaseClass {
     }
 
     //Post Posts Method
-    public PostResponse postPosts(String postPostBody, int id) {
+    public PostResponse postPosts(PostPostBody postPostBody,int id) {
         PostResponse response = given()
                 .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)

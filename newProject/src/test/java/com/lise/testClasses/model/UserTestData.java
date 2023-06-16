@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.javafaker.Faker;
 import com.lise.BaseClass;
 
-import com.lise.modals.UserPostBody;
-import com.lise.modals.UserPutBody;
-import com.lise.modals.UserResponse;
+import com.lise.modals.users.UserPostBody;
+import com.lise.modals.users.UserPutBody;
+import com.lise.modals.users.UserResponse;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
 
@@ -54,13 +54,19 @@ public class UserTestData extends BaseClass {
     @Test
     public void putUserTestData() {
         Faker faker = new Faker();
-
         UserPostBody userPostBody =new UserPostBody();
 
         userPostBody.setName(faker.name().name());
         userPostBody.setEmail(faker.internet().emailAddress());
         userPostBody.setGender("male");
         userPostBody.setStatus("active");
+
+        UserPutBody updateUserBody =new UserPutBody();
+        updateUserBody.setName(faker.name().name());
+        updateUserBody.setEmail(faker.internet().emailAddress());
+        updateUserBody.setGender("male");
+        updateUserBody.setStatus("active");
+
         UserResponse postUserResponse = postUser(userPostBody);
 
         int userId = postUserResponse.getId();
@@ -71,22 +77,15 @@ public class UserTestData extends BaseClass {
         assertThat(postUserResponse.getGender(), is(userPostBody.gender));
         assertThat(postUserResponse.getStatus(), is(userPostBody.status));
 
-        UserPutBody updateUserBody =new UserPutBody();
-        updateUserBody.setName(faker.name().name());
-        updateUserBody.setEmail(faker.internet().emailAddress());
-        updateUserBody.setGender("male");
-        updateUserBody.setStatus("active");
-
-
-        UserPostBody putUserResponse = putUser(updateUserBody, userId);
+        UserResponse putUserResponse = putUser(updateUserBody, userId);
 
         int putUserId = putUserResponse.getId();
 
         assertThat(putUserResponse.getId(), is(putUserId));
-        assertThat(putUserResponse.getName(), is());
-        assertThat(putUserResponse.getEmail(), is(updateUserEmail));
-        assertThat(putUserResponse.getGender(), is(updateUserGender));
-        assertThat(putUserResponse.getStatus(), is(updateUserStatus));
+        assertThat(putUserResponse.getName(), is(updateUserBody.name));
+        assertThat(putUserResponse.getEmail(), is(updateUserBody.email));
+        assertThat(putUserResponse.getGender(), is(updateUserBody.gender));
+        assertThat(putUserResponse.getStatus(), is(updateUserBody.status));
 
         Response deletePostUserResponse = deleteUsers(putUserId);
 
@@ -106,7 +105,7 @@ public class UserTestData extends BaseClass {
         return response;
     }
     // User Put Method
-    public UserResponse putUser(UserPostBody updateUserBody, int id) {
+    public UserResponse putUser(UserPutBody updateUserBody, int id) {
         UserResponse response = given()
                 .header("Authorization", accessToken)
                 .contentType(ContentType.JSON)

@@ -1,12 +1,10 @@
-package com.lise.modals;
+package com.lise.modals.posts;
 
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class PostResponse {
     int id;
     int user_id;

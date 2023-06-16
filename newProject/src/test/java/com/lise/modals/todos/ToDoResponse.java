@@ -1,12 +1,10 @@
-package com.lise.modals;
+package com.lise.modals.todos;
 
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class ToDoResponse {
     int id;
     int user_id;
